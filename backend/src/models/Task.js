@@ -1,5 +1,7 @@
+// Importation de mongoose pour la création du schéma de données et du modèle Task
 import mongoose from 'mongoose';
 
+// Définition du schéma de données pour les tâches (Task)
 const taskSchema = new mongoose.Schema(
   {
     user: {

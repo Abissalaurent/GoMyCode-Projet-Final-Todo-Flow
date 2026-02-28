@@ -1,11 +1,18 @@
+// Importation d'express pour la création du routeur et des routes de gestion des tâches
 import express from 'express';
+
+// Importation du modèle Task pour interagir avec la collection des tâches dans la base de données
 import Task from '../models/Task.js';
+
+// Importation du middleware d'authentification pour protéger les routes nécessitant une authentification
 import { authRequired } from '../middleware/auth.js';
 
+// Création du routeur pour les tâches
 const router = express.Router();
 
 router.use(authRequired);
 
+// Route pour récupérer toutes les tâches de l'utilisateur connecté, avec possibilité de filtrer par statut
 router.get('/', async (req, res) => {
   try {
     const { status } = req.query;
@@ -21,6 +28,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Route pour créer une nouvelle tâche pour l'utilisateur connecté
 router.post('/', async (req, res) => {
   try {
     const { title, description, status, dueDate } = req.body;
@@ -44,6 +52,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Route pour mettre à jour une tâche existante de l'utilisateur connecté
 router.patch('/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -73,6 +82,7 @@ router.patch('/:id', async (req, res) => {
   }
 });
 
+// Route pour supprimer une tâche de l'utilisateur connecté
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;

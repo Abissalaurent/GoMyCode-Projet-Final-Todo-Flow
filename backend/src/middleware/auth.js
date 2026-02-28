@@ -1,5 +1,7 @@
-import jwt from 'jsonwebtoken';
+// Importation de jsonwebtoken pour la gestion des tokens JWT
+import jwt from 'jsonwebtoken'; 
 
+// Middleware d'authentification pour protéger les routes nécessitant une authentification
 export function authRequired(req, res, next) {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
