@@ -26,8 +26,7 @@ export default function AuthLayout({ title, subtitle, children, footer }) {
             </li>
           </ul>
           <p className="text-xs text-slate-500">
-            En continuant, vous acceptez nos conditions d&apos;utilisation. Ce projet est un
-            exemple pédagogique construit avec React, Tailwind et JWT.
+            En continuant, vous acceptez nos conditions d'utilisation.
           </p>
         </div>
         <div className="flex flex-col justify-center gap-6 rounded-xl border border-slate-800 bg-slate-900/80 p-6">

@@ -83,7 +83,7 @@ export default function RegisterPage() {
           className="flex w-full items-center justify-center gap-2 rounded-lg bg-indigo-500 px-3 py-2 text-sm font-medium text-white shadow-sm shadow-indigo-500/40 transition hover:bg-indigo-400 disabled:opacity-70"
         >
           {loading && <Loader2 className="h-4 w-4 animate-spin" />}
-          <span>S&apos;inscrire</span>
+          <span>S'inscrire</span>
         </button>
       </form>
     </AuthLayout>
