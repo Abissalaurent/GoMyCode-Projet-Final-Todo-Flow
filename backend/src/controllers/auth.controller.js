@@ -4,6 +4,7 @@ import { generateToken } from '../utils/generateToken.js'; // Importation de la 
 /**
  * REGISTER
  */
+// auth.controller.js - Section register améliorée
 export const register = async (req, res) => {
     try {
         const { name, email, password } = req.body;
@@ -22,7 +23,6 @@ export const register = async (req, res) => {
         }
 
         const user = await User.create({ name, email, password });
-
         const token = generateToken(user._id);
 
         return res.status(201).json({
@@ -36,6 +36,20 @@ export const register = async (req, res) => {
 
     } catch (err) {
         console.error('Register error:', err);
+        
+        // 🎯 Gestion spécifique des erreurs Mongoose
+        if (err.name === 'ValidationError') {
+            return res.status(400).json({
+                message: 'Validation failed',
+                errors: Object.values(err.errors).map(e => e.message)
+            });
+        }
+        if (err.code === 11000) { // Duplicate key error
+            return res.status(409).json({
+                message: 'Email already exists',
+            });
+        }
+        
         return res.status(500).json({
             message: 'Internal server error',
         });
