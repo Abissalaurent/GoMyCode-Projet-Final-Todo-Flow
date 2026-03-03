@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Plus, LogOut, Filter } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext.jsx';
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = `${import.meta.env.VITE_BACKEND_URL}/api`;
 
 const STATUS_CONFIG = {
   todo: { label: 'À faire', color: 'border-amber-500/60 bg-amber-500/5' },
@@ -241,11 +241,10 @@ export default function DashboardPage() {
                     setFilter(f.id);
                     fetchTasks(f.id);
                   }}
-                  className={`rounded-full px-2.5 py-1 ${
-                    filter === f.id
+                  className={`rounded-full px-2.5 py-1 ${filter === f.id
                       ? 'bg-slate-100 text-slate-900'
                       : 'text-slate-300 hover:bg-slate-800'
-                  }`}
+                    }`}
                 >
                   {f.label}
                 </button>
